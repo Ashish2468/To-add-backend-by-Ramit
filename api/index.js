@@ -8,6 +8,19 @@ const authRoute = require('./routes/auth');
 
 dotenv.config();
 
+// const {MongoClient} = require('mongodb');
+// const uri =
+//   'mongodb+srv://RKPuram123:RKPuram123@cluster0.wuj7s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+// const client = new MongoClient(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+// client.connect(err => {
+//   const collection = client.db('test').collection('devices');
+//   // perform actions on the collection object
+//   client.close();
+// });
+
 mongoose.connect(
   process.env.MONGO_URL,
   {useNewUrlParser: true, useUnifiedTopology: true},
