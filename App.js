@@ -66,7 +66,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from './src/screens/Loginscreen';
 import Signupscreen from './src/screens/Signupscreen';
-import HomeScreen from './src/screens/Homescreen';
+import Homescreen from './src/screens/Homescreen';
+import Basescreen from './src/screens/Basescreen';
 // import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createStackNavigator();
@@ -96,10 +97,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={screenOptionStyle}>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="HomeScreen" component={Homescreen} />
           <Stack.Screen name="Signupscreen" component={Signupscreen} />
-          <Stack.Screen name="Detail" component={Detail} />
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Basescreen" component={Basescreen} />
+          {/* <Stack.Screen name="Detail" component={Detail} /> */}
+          {/* <Stack.Screen name="Home" component={Home} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {TextInput} from 'react-native-paper';
 import {MyReactNativeForm} from './MyReactNativeForm';
 
-export default function Homescreen({navigation}) {
+export default function Basescreen({navigation}) {
   const [text, setText] = React.useState('');
   const [Password, setPassword] = React.useState('');
 
