@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/Users');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
+const verify = require('../verifyToken');
 //register a user
 router.post('/register', async (req, res) => {
   try {
@@ -39,8 +39,18 @@ router.post('/login', async (req, res) => {
     const accessToken = jwt.sign({id: user._id, isAdmin: user.isAdmin}, 'sss', {
       expiresIn: '1d',
     });
-
     await user.updateOne({$set: {token: accessToken}});
+    const {pw, ...info} = user._doc;
+
+    res.status(200).json({...info, accessToken});
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get('/', verify, async (req, res) => {
+  try {
+    const user = await Users.find({});
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json(error);

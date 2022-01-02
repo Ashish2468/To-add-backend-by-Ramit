@@ -1,5 +1,5 @@
 export const INITIAL_STATE = {
-  user: null,
+  user: localStorage.getItem('user') || null,
   token: '',
   isFetching: false,
   error: false,
