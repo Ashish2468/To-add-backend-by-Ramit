@@ -32,12 +32,13 @@ app.post('/', (req, res) => {
 });
 
 app.get('/', requireTokens, (req, res) => {
-  res.send('loggin' + req.user.userName);
+  // res.send('loggin' + req.user.pw);
+  res.send({email:req.user.userName})
 });
 
-app.get('/2', requires, (req, res) => {
-  res.send('loggin' + req.user.userName);
-});
+// app.get('/2', requires, (req, res) => {
+//   res.send('loggin' + req.user.pw);
+// });
 
 app.listen(PORT, () => {
   console.log('listening on port' + PORT);
