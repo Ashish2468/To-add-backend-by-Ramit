@@ -3,7 +3,7 @@ import {Button, TextInput} from 'react-native-paper';
 import {ActivityIndicator, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Homescreen = ({navigation}) => {
+const Homescreen2 = ({navigation}) => {
   const [email, setEmail] = useState('loading');
   const Boiler = async () => {
     const token = await AsyncStorage.getItem('token');
@@ -24,7 +24,7 @@ const Homescreen = ({navigation}) => {
 
   const logout = () => {
     AsyncStorage.removeItem('token').then(() => {
-      navigation.replace('LoginScreen');
+      navigation.navigate('LoginScreen');
     });
   };
 
@@ -41,4 +41,4 @@ const Homescreen = ({navigation}) => {
   );
 };
 
-export default Homescreen;
+export default Homescreen2;

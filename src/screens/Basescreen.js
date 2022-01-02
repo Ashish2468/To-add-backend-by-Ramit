@@ -1,27 +1,42 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image, Button} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {TextInput} from 'react-native-paper';
-import {MyReactNativeForm} from './MyReactNativeForm';
+import React,{useEffect} from 'react';
+import {
+  ActivityIndicator,
+  View,
+  StyleSheet
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Basescreen({navigation}) {
-  const [text, setText] = React.useState('');
-  const [Password, setPassword] = React.useState('');
+const Basescreen = ({navigation}) => {
+
+
+  const detectLogin= async ()=>{
+    const token = await AsyncStorage.getItem('token')
+        if(token){
+              navigation.navigate("Homescreen")
+        }else{
+            navigation.replace("LoginScreen")
+        }
+  }
+  useEffect(()=>{
+   detectLogin()
+  },[])
 
   return (
-    <View
-      style={{flex: 1, justifyContent: 'center', backgroundColor: '#2196f3'}}>
-      {/* <Text>Home Screen</Text> */}
-
-      <Image
-        source={{
-          uri: 'https://cdn.educba.com/academy/wp-content/uploads/2019/01/cropped-EDUCBA_LOGO.png',
-        }}
-        style={{width: 250, height: 70, marginBottom: 50, alignSelf: 'center'}}
-      />
-      <MyReactNativeForm />
-    </View>
+   <View style={styles.loading}> 
+    <ActivityIndicator size="large" color="blue" />
+   </View>
   );
-}
+};
 
-const styles = StyleSheet.create({});
+
+const styles= StyleSheet.create({
+    loading:{
+     flex:1,
+    justifyContent:"center",
+    alignItems:"center" 
+    }
+    
+  })
+
+
+export default Basescreen;
