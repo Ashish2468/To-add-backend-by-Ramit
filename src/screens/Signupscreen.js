@@ -56,7 +56,7 @@ export default function Signupscreen({navigation}) {
           //   marginHorizontal:20
           alignSelf: 'center',
         }}
-        onPress={() => navigation.navigate('Detail')}>
+        onPress={() => navigation.navigate('HomeScreen')}>
         <Text style={{fontSize: 20,fontWeight: 'bold'}}>Sign UP</Text>
       </TouchableOpacity>
       <TouchableOpacity
